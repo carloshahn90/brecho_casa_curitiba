@@ -1,0 +1,498 @@
+<!--
+  Site de vendas – página única (HTML + CSS + JS puro)
+  Como usar:
+  ...existing code...
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brechó da Casa Raquel e Carlos – Itens à venda</title>
+  <meta name="description" content="Galeria de itens com fotos, preço e descrição para venda." />
+  <style>
+    :root {
+      --bg: #0b0f14;
+      --card: #111827;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --accent: #22d3ee;
+      --accent-2: #a78bfa;
+      --ok: #34d399;
+      --warn: #f59e0b;
+      --shadow: 0 6px 24px rgba(0,0,0,.25);
+      --radius: 16px;
+      --gap: 18px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(167,139,250,.08), transparent 60%),
+                  radial-gradient(1200px 800px at 120% -20%, rgba(34,211,238,.08), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+    }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: saturate(1.2) blur(8px);
+      background: rgba(11,15,20,.6);
+      border-bottom: 1px solid rgba(148,163,184,.15);
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 18px; }
+    .hero { display: grid; grid-template-columns: 1fr; gap: var(--gap); align-items: center; }
+    .title { font-size: clamp(22px, 3.6vw, 40px); margin: 0 0 4px 0; letter-spacing: .2px; }
+    .subtitle { color: var(--muted); margin: 0; font-size: 14px; }
+    .controls { display: grid; grid-template-columns: 1fr; gap: var(--gap); margin-top: 12px; }
+    @media (min-width: 720px) {
+      .controls { grid-template-columns: 1fr 180px 180px; }
+    }
+    .control {
+      background: rgba(17,24,39,.7);
+      border: 1px solid rgba(148,163,184,.2);
+      border-radius: 999px;
+      padding: 10px 14px;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: var(--shadow);
+    }
+    .control input, .control select {
+      width: 100%;
+      background: transparent; border: 0; color: var(--text); outline: none;
+      font-size: 14px;
+    }
+    .grid { display: grid; gap: var(--gap); padding: 20px 0 40px; }
+    @media (min-width: 560px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 900px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), transparent 45%), var(--card);
+      border: 1px solid rgba(148,163,184,.15);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,.35); }
+    .thumb { position: relative; aspect-ratio: 4/3; width: 100%; background: #0e1622; cursor: zoom-in; }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* Legenda sobre a imagem */
+    .img-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      font-size: 14px;
+      padding: 4px 8px;
+      text-align: center;
+    }
+    .badge {
+      position: absolute; left: 10px; top: 10px;
+      background: rgba(10, 10, 10, .6);
+      border: 1px solid rgba(148,163,184,.3);
+      color: var(--text);
+      backdrop-filter: blur(6px);
+      padding: 6px 10px; border-radius: 999px; font-size: 12px;
+    }
+    .content { padding: 14px; display: grid; gap: 8px; }
+    .title-sm { margin: 0; font-size: 16px; }
+    .desc { color: var(--muted); font-size: 13px; margin: 0; min-height: 36px; }
+    .meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .price { font-size: 18px; font-weight: 700; letter-spacing: .3px; }
+    .category { font-size: 12px; color: var(--muted); }
+    .actions { display: flex; gap: 8px; margin-top: 6px; }
+    .btn {
+      appearance: none; border: 0; cursor: pointer; text-decoration: none; color: #081018;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      font-weight: 700; letter-spacing: .3px; padding: 10px 14px; border-radius: 12px;
+      transition: transform .08s ease; display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn:active { transform: translateY(1px); }
+    .btn.secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid rgba(148,163,184,.25);
+    }
+
+    /* Modal (lightbox) */
+    .modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; padding: 24px; background: rgba(0,0,0,.7); }
+    .modal.open { display: flex; }
+    .modal-card { background: #0b1220; border: 1px solid rgba(148,163,184,.25); border-radius: 18px; max-width: 980px; width: 100%; overflow: hidden; box-shadow: var(--shadow); }
+    .modal-body { display: grid; grid-template-columns: 1fr; }
+    @media (min-width: 820px) { .modal-body { grid-template-columns: 1.2fr 1fr; } }
+    .modal-img { background: #0e1622; aspect-ratio: 4/3; width: 100%; }
+    .modal-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .modal-content { padding: 18px; display: grid; gap: 10px; }
+    .modal-close { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,.08); border: 1px solid rgba(148,163,184,.25); color: var(--text); border-radius: 999px; padding: 8px 10px; cursor: pointer; }
+
+    footer { border-top: 1px solid rgba(148,163,184,.15); color: var(--muted); font-size: 12px; padding: 22px 0; }
+    a { color: inherit; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container hero">
+      <div>
+        <h1 class="title">Brechó da Casa Raquel e Carlos</h1>
+        <p class="subtitle">Itens usados em ótimo estado. Retirada em mãos ou envio a combinar.</p>
+      </div>
+      <div class="controls">
+        <div class="control">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21L15.8 15.8M10.5 18C14.0899 18 17 15.0899 17 11.5C17 7.91015 14.0899 5 10.5 5C6.91015 5 4 7.91015 4 11.5C4 15.0899 6.91015 18 10.5 18Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input id="search" type="search" placeholder="Buscar por nome ou descrição…" aria-label="Busca" />
+        </div>
+        <div class="control">
+          <select id="category">
+            <option value="">Todas as categorias</option>
+          </select>
+        </div>
+        <div class="control">
+          <select id="sort">
+            <option value="recent">Mais recentes</option>
+            <option value="price-asc">Preço: menor → maior</option>
+            <option value="price-desc">Preço: maior → menor</option>
+            <option value="title-asc">Título: A → Z</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="grid" class="grid" aria-live="polite"></section>
+  </main>
+
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="Visualização do item">
+    <div class="modal-card">
+      <button class="modal-close" title="Fechar" aria-label="Fechar">✕</button>
+      <div class="modal-body">
+        <div class="modal-img"><img alt="Imagem do item" id="modalImg" /></div>
+        <div class="modal-content">
+          <h2 id="modalTitle" class="title-sm"></h2>
+          <div class="meta"><span id="modalPrice" class="price"></span><span id="modalCategory" class="category"></span></div>
+          <p id="modalDesc" class="desc"></p>
+          <div class="actions">
+            <a id="ctaWhats" class="btn" target="_blank" rel="noopener">Tenho interesse</a>
+            <button id="ctaCopiar" class="btn secondary">Copiar info</button>
+          </div>
+          <small class="subtitle">Preferência por retirada em mãos. Envio a combinar.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Brechó da Casa. Feito com HTML, CSS e JS puro.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ======= UTIL =======
+    const fmtBRL = (n) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(n);
+    const byId = (id) => document.getElementById(id);
+
+    // ======= DADOS (edite aqui) =======
+    // Imagens em pasta "imagens" – nome do arquivo no formato NOME_PRECO
+    const ITEMS = [
+      {
+        id: "aquecedor-1",
+        title: "Aquecedor Elétrico a Óleo",
+        price: 100.00,
+        description: "Aquecedor Elétrico a Óleo.",
+        image: "imagens/aquecedor_100.jpg",
+        condition: "Usado",
+        category: "Eletrodomésticos",
+        createdAt: "2025-08-10"
+      },
+      {
+        id: "cama-1",
+        title: "Cama + Colchão Guldi Casal",
+        price: 1500.00,
+        description: "Colchão Guldi D30 2 anos.",
+        image: "imagens/cama_1500.jpg",
+        condition: "Usado",
+        category: "Móveis",
+        createdAt: "2025-08-11"
+      },
+      {
+        id: "comoda-1",
+        title: "Comoda de Madeira Branca",
+        price: 650.00,
+        description: "",
+        image: "imagens/comoda_650.jpg",
+        condition: "Usado",
+        category: "Móveis",
+        createdAt: "2025-08-12"
+      },
+      {
+        id: "cooler-1",
+        title: "Cooler",
+        price: 25.00,
+        description: "",
+        image: "imagens/cooler_25.jpg",
+        condition: "Usado",
+        category: "Itens Diversos",
+        createdAt: "2025-08-12"
+      },
+      {
+        id: "ukulele-1",
+        title: "ukulele Kalani",
+        price: 250.00,
+        description: "",
+        image: "imagens/ukulele_250.jpg",
+        condition: "Usado",
+        category: "Itens Diversos",
+        createdAt: "2025-08-12"
+      },
+      {
+        id: "pescoço-1",
+        title: "Corretor de pescoço",
+        price: 20.00,
+        description: "",
+        image: "imagens/pescoco.jpg",
+        condition: "Usado",
+        category: "Itens Diversos",
+        createdAt: "2025-08-12"
+      },
+      {
+        id: "tapete_ioga-1",
+        title: "Tapete de ioga",
+        price: 20.00,
+        description: "",
+        image: "imagens/tapete_ioga.jpg",
+        condition: "Usado",
+        category: "Academia",
+        createdAt: "2025-08-13"
+      },
+      {
+        id: "peso_perna-1",
+        title: "Peso para perna",
+        price: 75.00,
+        description: "Peso de academia para perna. 1 par 2kg: R$ 22,00. 3 pares 1kg: R$ 20,00 cada. Todos juntos: R$ 75,00",
+        image: "imagens/peso_perna.jpg",
+        condition: "Usado",
+        category: "Academia",
+        createdAt: "2025-08-13"
+      },
+      {
+        id: "alteres-1",
+        title: "Alteres",
+        price: 75.00,
+        description: "5Kg: R$ 20,00. 2Kg: R$ 20,00 cada. 1 Kg: R$ 10,00 cada. Todos juntos: R$ 75,00",
+        image: "imagens/alteres.jpg",
+        condition: "Usado",
+        category: "Academia",
+        createdAt: "2025-08-13"
+      },
+      {
+        id: "colchao_academia-1",
+        title: "Colchão de academia",
+        price: 170.00,
+        description: "Marca Muvin D80 em ótimo estado. R$ 85,00 cada ou R$ 170,00 o par.",
+        image: "imagens/colchao_academia.jpg",
+        condition: "Usado",
+        category: "Academia",
+        createdAt: "2025-08-13"
+      },
+      {
+        id: "astronauta-1",
+        title: "Projetor Astronauta",
+        price: 15.00,
+        description: "Projetor astronauta.",
+        image: "imagens/astronauta_projetor.jpg",
+        condition: "Usado",
+        category: "Itens Diversos",
+        createdAt: "2025-08-13"
+      },
+      {
+        id: "ferro-1",
+        title: "Ferro de passar roupa",
+        price: 25.00,
+        description: "",
+        image: "imagens/ferro.jpg",
+        condition: "Usado",
+        category: "Eletrodomésticos",
+        createdAt: "2025-08-13"
+      },
+      {
+        id: "monitor-1",
+        title: "Monitor LG 24'",
+        price: 350.00,
+        description: "",
+        image: "imagens/monitor_lg.jpg",
+        condition: "Usado",
+        category: "Eletronicos",
+        createdAt: "2025-08-13"
+      },
+      {
+        id: "alexa-1",
+        title: "Alexa echo show 5",
+        price: 350.00,
+        description: "",
+        image: "imagens/alexa.jpg",
+        condition: "Usado",
+        category: "Eletronicos",
+        createdAt: "2025-08-13"
+      },
+
+    ];
+
+    // ======= ESTADO =======
+    const state = {
+      query: "",
+      category: "",
+      sort: "recent",
+    };
+
+    // ======= RENDER =======
+    const grid = byId('grid');
+    const search = byId('search');
+    const category = byId('category');
+    const sort = byId('sort');
+
+    function uniqueCategories(items) {
+      const set = new Set(items.map(i => i.category).filter(Boolean));
+      return ["", ...Array.from(set)];
+    }
+
+    function applyFilters(items) {
+      let filtered = items.slice();
+      const q = state.query.trim().toLowerCase();
+      if (q) {
+        filtered = filtered.filter(i =>
+          (i.title || '').toLowerCase().includes(q) ||
+          (i.description || '').toLowerCase().includes(q)
+        );
+      }
+      if (state.category) {
+        filtered = filtered.filter(i => i.category === state.category);
+      }
+      switch (state.sort) {
+        case 'price-asc':
+          filtered.sort((a,b) => a.price - b.price); break;
+        case 'price-desc':
+          filtered.sort((a,b) => b.price - a.price); break;
+        case 'title-asc':
+          filtered.sort((a,b) => (a.title||'').localeCompare(b.title||'', 'pt-BR')); break;
+        case 'recent':
+        default:
+          filtered.sort((a,b) => new Date(b.createdAt||0) - new Date(a.createdAt||0));
+      }
+      return filtered;
+    }
+
+    function render() {
+      // Categorias
+      const cats = uniqueCategories(ITEMS);
+      category.innerHTML = cats.map(c => `<option value="${c}">${c || 'Todas as categorias'}</option>`).join('');
+      category.value = state.category;
+
+      const items = applyFilters(ITEMS);
+      grid.innerHTML = items.map(item => Card(item)).join('');
+      bindCardEvents(items);
+    }
+
+    function Card(item) {
+      const price = fmtBRL(item.price || 0);
+      const cond = item.condition === 'Novo' ? 'Novo' : 'Usado';
+      const cat = item.category || '';
+      return `
+        <article class="card" data-id="${item.id}">
+          <div class="thumb" data-click="zoom">
+            <img src="${item.image}" alt="${escapeHtml(item.title)}" loading="lazy" />
+            <div class="img-caption">${escapeHtml(item.title)} – ${price}</div>
+            <span class="badge">${cond}</span>
+          </div>
+          <div class="content">
+            <h3 class="title-sm">${escapeHtml(item.title)}</h3>
+            <p class="desc">${escapeHtml(item.description || '')}</p>
+            <div class="meta">
+              <span class="price">${price}</span>
+              <span class="category">${escapeHtml(cat)}</span>
+            </div>
+            <div class="actions">
+              <a class="btn" href="${waLink(item)}" target="_blank" rel="noopener">Tenho interesse</a>
+              <button class="btn secondary" data-click="copiar">Copiar info</button>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function waLink(item) {
+      const text = `Olá! Tenho interesse no item: ${item.title} (ID: ${item.id}) por ${fmtBRL(item.price)}.`;
+      return `https://wa.me/?text=${encodeURIComponent(text)}`;
+    }
+
+    function bindCardEvents(items) {
+      document.querySelectorAll('.card .thumb').forEach(el => {
+        el.addEventListener('click', (e) => {
+          const id = e.currentTarget.closest('.card').dataset.id;
+          const item = items.find(i => i.id === id);
+          openModal(item);
+        });
+      });
+      document.querySelectorAll('[data-click="copiar"]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const id = e.currentTarget.closest('.card').dataset.id;
+          const item = items.find(i => i.id === id);
+          const texto = `${item.title} - ${fmtBRL(item.price)}\n${item.description}`;
+          navigator.clipboard.writeText(texto).then(() => {
+            btn.textContent = 'Copiado!';
+            setTimeout(() => btn.textContent = 'Copiar info', 1200);
+          });
+        });
+      });
+    }
+
+    // ======= MODAL =======
+    const modal = byId('modal');
+    const modalImg = byId('modalImg');
+    const modalTitle = byId('modalTitle');
+    const modalPrice = byId('modalPrice');
+    const modalCategory = byId('modalCategory');
+    const modalDesc = byId('modalDesc');
+    const ctaWhats = byId('ctaWhats');
+    const ctaCopiar = byId('ctaCopiar');
+    const closeBtn = document.querySelector('.modal-close');
+
+    function openModal(item) {
+      modalImg.src = item.image;
+      modalImg.alt = item.title;
+      modalTitle.textContent = item.title;
+      modalPrice.textContent = fmtBRL(item.price);
+      modalCategory.textContent = item.category || '';
+      modalDesc.textContent = item.description || '';
+      ctaWhats.href = waLink(item);
+      ctaCopiar.onclick = () => {
+        const texto = `${item.title} - ${fmtBRL(item.price)}\n${item.description}`;
+        navigator.clipboard.writeText(texto);
+      };
+      modal.classList.add('open');
+    }
+    function closeModal() { modal.classList.remove('open'); }
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    // ======= BUSCA & ORDEM =======
+    search.addEventListener('input', () => { state.query = search.value; render(); });
+    category.addEventListener('change', () => { state.category = category.value; render(); });
+    sort.addEventListener('change', () => { state.sort = sort.value; render(); });
+
+    // ======= ESCAPES =======
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));
+    }
+
+    // ======= INIT =======
+    document.addEventListener('DOMContentLoaded', () => {
+      byId('year').textContent = new Date().getFullYear();
+      render();
+    });
+  </script>
+</body>
+</html>
