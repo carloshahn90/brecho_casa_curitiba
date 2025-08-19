@@ -210,8 +210,8 @@
       {
         id: "cama-1",
         title: "Cama + Colchão Guldi Casal",
-        price: 1500.00,
-        description: "Colchão Guldi D30, tamanho: 138x188x25. 2 anos de uso.",
+        price: 1200.00,
+        description: "Colchão Guldi D30, tamanho: 138x188x25, 2 anos de uso, valor R$1.000,00.\n Cama de madeira maciça, tamanho: 140x190x30, valor R$250,00.\n\nValor do conjunto: R$1.200,00.",
         image: "imagens/cama_1500.jpg",
         condition: "Usado",
         category: "Móveis",
@@ -220,7 +220,7 @@
       {
         id: "comoda-1",
         title: "Comoda de Madeira Branca",
-        price: 650.00,
+        price: 400.00,
         description: "",
         image: "imagens/comoda_650.jpg",
         condition: "Usado",
@@ -320,7 +320,7 @@
       {
         id: "alexa-1",
         title: "Alexa echo show 5",
-        price: 350.00,
+        price: 200.00,
         description: "",
         image: "imagens/alexa.jpg",
         condition: "Usado",
@@ -1458,7 +1458,7 @@
 
     function Card(item) {
       const price = fmtBRL(item.price || 0);
-      const cond = item.condition === 'Novo' ? 'Novo' : 'Usado';
+      const cond = item.condition === 'Novo' ? 'Novo' : item.condition === 'Doação' ? 'Doação' : 'Usado';
       const cat = item.category || '';
       return `
         <article class="card" data-id="${item.id}">
