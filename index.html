@@ -196,18 +196,8 @@
 
     // ======= DADOS (edite aqui) =======
     // Imagens em pasta "imagens" – nome do arquivo no formato NOME_PRECO
-    const ITEMS = [
+    const ITEMS = [      
       /*{
-        id: "aquecedor-1",
-        title: "Aquecedor Elétrico a Óleo",
-        price: 100.00,
-        description: "Aquecedor Elétrico a Óleo 110v.",
-        image: "imagens/aquecedor_100.jpg",
-        condition: "Usado",
-        category: "Eletrodomésticos",
-        createdAt: "2025-08-10"
-      },* VENDIDA Rafaela Moraes*/
-      {
         id: "cama-1",
         title: "Cama + Colchão Guldi Casal",
         price: 1200.00,
@@ -226,17 +216,7 @@
         condition: "Usado",
         category: "Móveis",
         createdAt: "2025-08-19"
-      },
-      {
-        id: "cooler-1",
-        title: "Cooler",
-        price: 25.00,
-        description: "",
-        image: "imagens/cooler_25.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-12"
-      },
+      },*/      
       {
         id: "ukulele-1",
         title: "ukulele Kalani",
@@ -245,7 +225,7 @@
         image: "imagens/ukulele_250.jpg",
         condition: "Usado",
         category: "Itens Diversos",
-        createdAt: "2025-08-12"
+        createdAt: "2025-10-17"
       },
       {
         id: "pescoço-1",
@@ -265,9 +245,9 @@
         image: "imagens/peso_perna.jpg",
         condition: "Usado",
         category: "Academia",
-        createdAt: "2025-08-13"
+        createdAt: "2025-10-18"
       },
-      /*{
+      {
         id: "alteres-1",
         title: "Alteres",
         price: 75.00,
@@ -275,8 +255,8 @@
         image: "imagens/alteres.jpg",
         condition: "Usado",
         category: "Academia",
-        createdAt: "2025-08-13"
-      },Vendido - Eliseu */
+        createdAt: "2025-10-18"
+      },
       {
         id: "colchao_academia-1",
         title: "Colchão de academia",
@@ -285,39 +265,9 @@
         image: "imagens/colchao_academia.jpg",
         condition: "Usado",
         category: "Academia",
-        createdAt: "2025-08-13"
-      },      
-      /*{
-        id: "ferro-1",
-        title: "Ferro de passar roupa 110v",
-        price: 25.00,
-        description: "",
-        image: "imagens/ferro.jpg",
-        condition: "Usado",
-        category: "Eletrodomésticos",
-        createdAt: "2025-08-13"
-      }, VENDIDA Rafaela Moraes*/
-      /*{
-        id: "monitor-1",
-        title: "Monitor LG 24'",
-        price: 350.00,
-        description: "",
-        image: "imagens/monitor_lg.jpg",
-        condition: "Usado",
-        category: "Eletronicos",
-        createdAt: "2025-08-13"
-      }, VENDIDA - Juliano*/
-      /*{
-        id: "alexa-1",
-        title: "Alexa echo show 5",
-        price: 200.00,
-        description: "",
-        image: "imagens/alexa.jpg",
-        condition: "Usado",
-        category: "Eletronicos",
-        createdAt: "2025-08-13"
-      }, VENDIDA - EXATA FINANCEIRO*/
-      /*{
+        createdAt: "2025-10-19"
+      },
+      {
         id: "teclado_mouse-1",
         title: "Teclado e mouse Dell",
         price: 60.00,
@@ -326,17 +276,7 @@
         condition: "Usado",
         category: "Eletronicos",
         createdAt: "2025-08-13"
-      },*/
-      {
-        id: "caixa_som-1",
-        title: "Caixa de som bluetooth",
-        price: 5.00,
-        description: "",
-        image: "imagens/caixa_som.jpg",
-        condition: "Usado",
-        category: "Eletronicos",
-        createdAt: "2025-08-13"
-      },
+      },      
       {
         id: "xilogravura-1",
         title: "Ferramenta para xilogravura",
@@ -357,7 +297,7 @@
         category: "Eletronicos",
         createdAt: "2025-08-13"
       },
-      {
+      /*{
         id: "limpeza_tela-1",
         title: "kit Limpeza de tela",
         price: 8.00,
@@ -366,7 +306,7 @@
         condition: "Usado",
         category: "Eletronicos",
         createdAt: "2025-08-13"
-      },
+      },*/
       {
         id: "moden-1",
         title: "Moden D-link",
@@ -386,27 +326,7 @@
         condition: "Usado",
         category: "Roupas",
         createdAt: "2025-08-13"
-      },
-      /*{
-        id: "sapateira-1",
-        title: "Sapateira de Plastico",
-        price: 15.00,
-        description: "",
-        image: "imagens/sapateira.jpg",
-        condition: "Usado",
-        category: "Móveis",
-        createdAt: "2025-08-19"
-      }, VENDIDA - Vitoria*/
-      /*{
-        id: "mesa_computador-1",
-        title: "Mesa para Computador",
-        price: 50.00,
-        description: "",
-        image: "imagens/mesa_computador.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-19"
-      }, VENDIDA - Juliano */     
+      },      
       {
         id: "almofada_pipoca-1",
         title: "Almofada Pipoca/Computador",
@@ -416,27 +336,7 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
-      /*{
-        id: "petisqueira-1",
-        title: "Petisqueira de Bambu",
-        price: 50.00,
-        description: "",
-        image: "imagens/petisqueira.jpg",
-        condition: "Usado",
-        category: "Cozinha",
-        createdAt: "2025-08-13"
-      },*/
-      /*{
-        id: "aspirador-1",
-        title: "Aspirador de pó",
-        price: 85.00,
-        description: "Aspirador de pó Electrolux powerspeed 1000W 110v",
-        image: "imagens/aspirador.jpg",
-        condition: "Usado",
-        category: "Eletrodomésticos",
-        createdAt: "2025-08-13"
-      }, VENDIDO - amiga Rafaela*/
+      },      
       {
         id: "lampada-1",
         title: "Lampada Inteligente Positivo",
@@ -445,7 +345,7 @@
         image: "imagens/lampada_positivo.jpg",
         condition: "Novo",
         category: "Eletronicos",
-        createdAt: "2025-08-13"
+        createdAt: "2025-10-18"
       },
       {
         id: "selfie-1",
@@ -456,17 +356,7 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
-      {
-        id: "latas-1",
-        title: "Latas",
-        price: 0.00,
-        description: "",
-        image: "imagens/latas.jpg",
-        condition: "Doação",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
+      },      
       {
         id: "caneca-1",
         title: "Caneca Darth Vader + Suculenta",
@@ -475,48 +365,8 @@
         image: "imagens/caneca_star_wars.jpg",
         condition: "Usado",
         category: "Itens Diversos",
-        createdAt: "2025-08-13"
+        createdAt: "2025-10-18"
       },
-      {
-        id: "sanduicheira-1",
-        title: "Sanduicheira Black & Decker",
-        price: 15.00,
-        description: "110v",
-        image: "imagens/sanduicheira.jpg",
-        condition: "Usado",
-        category: "Eletrodomésticos",
-        createdAt: "2025-08-13"
-      },
-      {
-        id: "vassoura-1",
-        title: "Vassoura",
-        price: 0.00,
-        description: "",
-        image: "imagens/vassoura.jpg",
-        condition: "Doação",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
-      {
-        id: "violao-1",
-        title: "Violão Strinberg com suporte",
-        price: 250.00,
-        description: "Precisa de manutenção no braço.",
-        image: "imagens/violao.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
-      /*{
-        id: "bicicleta-1",
-        title: "Item decorativo bicicleta",
-        price: 2.00,
-        description: "",
-        image: "imagens/bicicleta.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },Vendido*/
       {
         id: "porta_escova-1",
         title: "Porta escova de dente",
@@ -526,18 +376,8 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
+      },      
       /*{
-        id: "gaveta_banheiro-1",
-        title: "Pequeno gaveteiro de banheiro",
-        price: 3.00,
-        description: "",
-        image: "imagens/gaveta_banheiro.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },Vendido*/
-      {
         id: "caneca_ale-1",
         title: "Caneca cerâmica",
         price: 20.00,
@@ -546,7 +386,7 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
+      },*/
       {
         id: "vaso_decor-1",
         title: "Item de decoração",
@@ -567,7 +407,7 @@
         category: "Jogos",
         createdAt: "2025-08-13"
       },
-      {
+      /*{
         id: "copos_plastico-1",
         title: "3 copos de plastico",
         price: 0.00,
@@ -576,28 +416,8 @@
         condition: "Doação",
         category: "Cozinha",
         createdAt: "2025-08-13"
-      },
+      },*/      
       /*{
-        id: "mesa-1",
-        title: "Mesa 6 lugares",
-        price: 450.00,
-        description: "",
-        image: "imagens/mesa.jpg",
-        condition: "Usado",
-        category: "Móveis",
-        createdAt: "2025-08-19"
-      }, VENDIDA - Rafaela Moraes*/ 
-      /*{
-        id: "mixer-1",
-        title: "Mixer Philips Walita 400w 110v",
-        price: 80.00,
-        description: "",
-        image: "imagens/mixer.jpg",
-        condition: "Usado",
-        category: "Eletrodomésticos",
-        createdAt: "2025-08-13"
-      }, VENDIDO VITORIA   */  
-      {
         id: "lixeira-1",
         title: "Lixeira de plastivo 50L",
         price: 35.00,
@@ -606,7 +426,7 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },      
+      },*/      
       {
         id: "bomboneira-1",
         title: "Bomboneira de vidro",
@@ -616,17 +436,7 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
-      /*{
-        id: "forma-1",
-        title: "Formas de vidro",
-        price: 50.00,
-        description: "",
-        image: "imagens/forma.jpg",
-        condition: "Usado",
-        category: "Cozinha",
-        createdAt: "2025-08-13"
-      }, VENDIDO PEDRAO */     
+      },      
       {
         id: "canecas-2",
         title: "2 Canecas de chocolate",
@@ -635,38 +445,8 @@
         image: "imagens/caneca_chocolate.jpg",
         condition: "Usado",
         category: "Cozinha",
-        createdAt: "2025-08-13"
-      },
-      {
-        id: "pratos-1",
-        title: "Conjunto Guarana Camicado",
-        price: 150.00,
-        description: "6 Pratos rasos e 2 Copos de vidro conjunto Guaraná Antarctica",
-        image: "imagens/conjunto_guarana.jpg",
-        condition: "Usado",
-        category: "Cozinha",
-        createdAt: "2025-08-13"
+        createdAt: "2025-10-18"
       },      
-      {
-        id: "tabua_carne-1",
-        title: "Tabua de Carne",
-        price: 15.00,
-        description: "",
-        image: "imagens/tabua_carne.jpg",
-        condition: "Usado",
-        category: "Cozinha",
-        createdAt: "2025-08-13"
-      },      
-      {
-        id: "panela_micro-1",
-        title: "Panelas para microondas",
-        price: 5.00,
-        description: "",
-        image: "imagens/panela_microondas.jpg",
-        condition: "Usado",
-        category: "Cozinha",
-        createdAt: "2025-08-13"
-      },
       {
         id: "copo_ha-1",
         title: "Copo Homem-Aranha",
@@ -676,27 +456,7 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
-      {
-        id: "bowl_nescau-1",
-        title: "Bowl Nescau",
-        price: 3.00,
-        description: "",
-        image: "imagens/bowl_nescau.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
-      {
-        id: "kit_pipoca-2",
-        title: "Kit pipoca controle Xbox",
-        price: 15.00,
-        description: "",
-        image: "imagens/kit_pipoca_xbo.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
+      },            
       {
         id: "balde_pipoca-3",
         title: "Balde de pipoca Avengers",
@@ -706,17 +466,7 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
-      /*{
-        id: "cesta-1",
-        title: "Cesta de mandeira",
-        price: 5.00,
-        description: "",
-        image: "imagens/cesta.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      }, VENDIDO PEDRAO*/
+      },      
       {
         id: "cesta-2",
         title: "Cesta de mandeira",
@@ -738,81 +488,11 @@
         createdAt: "2025-08-13"
       },
       {
-        id: "cozinha-1",
-        title: "Aparelho de cozimento a vapor",
-        price: 250.00,
-        description: "110v",
-        image: "imagens/cozimento_vapor.jpg",
-        condition: "Usado",
-        category: "Eletrodomésticos",
-        createdAt: "2025-08-13"
-      },
-      /*{
-        id: "panela-2",
-        title: "Frigideira antiaderente",
-        price: 150.00,
-        description: "",
-        image: "imagens/frigideira_antiaderente.jpg",
-        condition: "Usado",
-        category: "Cozinha",
-        createdAt: "2025-08-13"
-      }, VENDIDO TIA KUTY*/ 
-      /*{
-        id: "lampada-2",
-        title: "Luminaria de mesa",
-        price: 2.00,
-        description: "",
-        image: "imagens/luminaria.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      }, VENDIDO - Wagner*/
-      {
-        id: "brinquedo-1",
-        title: "Insetos de brinquedo",
-        price: 3.00,
-        description: "",
-        image: "imagens/inseto_plastico.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
-      {
-        id: "cesta-4",
-        title: "Cesta Abobora",
-        price: 3.00,
-        description: "",
-        image: "imagens/cesta_abobora.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
-      {
         id: "barraca-4",
         title: "Barraca de camping",
         price: 70.00,
         description: "",
         image: "imagens/barraca.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
-      /*{
-        id: "lampada-3",
-        title: "6 Lampadas LED 9W",
-        price: 6.00,
-        description: "",
-        image: "imagens/lampadas.jpg",
-        condition: "Novo",
-        category: "Eletronicos",
-        createdAt: "2025-08-13"
-      }, VENDIDA - Vitoria*/
-      {
-        id: "chinelos-1",
-        title: "4 pares de Chinelo tamanho 33",
-        price: 35.00,
-        description: "",
-        image: "imagens/chinelos_33.jpg",
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
@@ -846,17 +526,7 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
-      /*{
-        id: "colchao_inflavel-1",
-        title: "Colchão inflável",
-        price: 40.00,
-        description: "",
-        image: "imagens/colchao_inflavel.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      }, VENDIDO - JOAO PEDRO*/
+      },      
       {
         id: "meiaol-1",
         title: "3 Meiões de futebol",
@@ -878,56 +548,6 @@
         createdAt: "2025-08-13"
       },
       {
-        id: "calculadora-1",
-        title: "Calculadora científica",
-        price: 30.00,
-        description: "",
-        image: "imagens/calculadora.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
-      {
-        id: "raquete-1",
-        title: "Raquetes",
-        price: 8.00,
-        description: "",
-        image: "imagens/raquete.jpg",
-        condition: "Usado",
-        category: "Jogos",
-        createdAt: "2025-08-13"
-      },
-      /*{
-        id: "oculos-1",
-        title: "Caixa de óculos",
-        price: 0.00,
-        description: "",
-        image: "imagens/caixa_oculos.jpg",
-        condition: "Doação",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },*/
-      {
-        id: "capa_chuva-1",
-        title: "Capa de chuva",
-        price: 5.00,
-        description: "",
-        image: "imagens/capa_chuva.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
-      /*{
-        id: "nobreak-1",
-        title: "Nobreak",
-        price: 60.00,
-        description: "Bivolt (tomadas antigas)",
-        image: "imagens/nobreak.jpg",
-        condition: "Usado",
-        category: "Eletronicos",
-        createdAt: "2025-08-13"
-      }, VENDIDA - Juliano*/
-      {
         id: "suporte_note-1",
         title: "Suportes para notebook",
         price: 15.00,
@@ -948,86 +568,6 @@
         createdAt: "2025-08-13"
       },
       /*{
-        id: "coberta_azul-1",
-        title: "Coberta azul casal",
-        price: 25.00,
-        description: "",
-        image: "imagens/coberta_azul.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
-      {
-        id: "coberta-1",
-        title: "Coberta casal",
-        price: 25.00,
-        description: "",
-        image: "imagens/coberta.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
-      {
-        id: "coberta_vermelha-1",
-        title: "Coberta vermelha Solteiro",
-        price: 20.00,
-        description: "",
-        image: "imagens/coberta_vermelha.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
-      {
-        id: "coberta_onca-1",
-        title: "Coberta Casal Onça",
-        price: 20.00,
-        description: "",
-        image: "imagens/coberta_onca.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
-      {
-        id: "edredom-1",
-        title: "Edredom casal",
-        price: 30.00,
-        description: "",
-        image: "imagens/edredom.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },      
-      {
-        id: "cobertor-2",
-        title: "Cobertor casal",
-        price: 70.00,
-        description: "",
-        image: "imagens/cobertor_peluciado.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },      
-      {
-        id: "coberta_flores-1",
-        title: "Cobertor flores Casal",
-        price: 25.00,
-        description: "",
-        image: "imagens/coberta_flores.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },*/
-      /*{
-        id: "mochila_sociesc-1",
-        title: "Mochila",
-        price: 10.00,
-        description: "",
-        image: "imagens/mochila_sociesc.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },VENDIDA - Vitoria */
-      {
         id: "mochila_note-1",
         title: "Mochila de notebook",
         price: 50.00,
@@ -1036,8 +576,8 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
-      {
+      },*/
+      /*{
         id: "mochila_note-2",
         title: "Mochila de notebook",
         price: 100.00,
@@ -1046,7 +586,7 @@
         condition: "Novo",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
+      },*/
       {
         id: "pasta_note-2",
         title: "Pasta para notebook",
@@ -1077,7 +617,7 @@
         category: "Itens Diversos",
         createdAt: "2025-08-13"
       },
-      {
+      /*{
         id: "mochila_listrada-1",
         title: "Mochila Listrada",
         price: 15.00,
@@ -1086,8 +626,8 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
-      {
+      },*/
+      /*{
         id: "mochila_flores-1",
         title: "Mochila Flores",
         price: 25.00,
@@ -1096,7 +636,7 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
+      },*/
       {
         id: "bolsa_termica_P-1",
         title: "Bolsa Termica tamanho P",
@@ -1126,18 +666,8 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
+      },      
       /*{
-        id: "bolsa_termica_m-2",
-        title: "Bolsa Termica tamanho M",
-        price: 45.00,
-        description: "",
-        image: "imagens/bolsa_termica_m_2.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      }, VENDIDO - Miriam*/
-      {
         id: "bolsa_termica_m-3",
         title: "Bolsa Termica tamanho M",
         price: 45.00,
@@ -1146,7 +676,7 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
+      },*/
       {
         id: "bolsa_termica_m-4",
         title: "Bolsa Termica tamanho M",
@@ -1166,17 +696,7 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },
-      {
-        id: "pote-1",
-        title: "Pote",
-        price: 0.00,
-        description: "",
-        image: "imagens/pote.jpg",
-        condition: "Doação",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
+      },      
       {
         id: "barraca-2",
         title: "Barraca T3",
@@ -1186,17 +706,7 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
-      },      
-      /*{
-        id: "costura-2",
-        title: "Mini maquina de costura",
-        price: 15.00,
-        description: "",
-        image: "imagens/costura.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },VENDIDO */
+      },
       {
         id: "capa_sapato-2",
         title: "Capa Impermeável para sapato",
@@ -1245,48 +755,8 @@
         image: "imagens/bowl.jpg",
         condition: "Usado",
         category: "Cozinha",
-        createdAt: "2025-08-13"
-      },
-      /*{
-        id: "bowl-3",
-        title: "4 Bowls plastico Coloridos",
-        price: 5.00,
-        description: "",
-        image: "imagens/bowl_plastico.jpg",
-        condition: "Usado",
-        category: "Cozinha",
-        createdAt: "2025-08-13"
-      }, VENDIDO*/
-      /*{
-        id: "caneca_chaleira-3",
-        title: "Par de canecas chaleira",
-        price: 35.00,
-        description: "",
-        image: "imagens/canecas_chaleira.jpg",
-        condition: "Usado",
-        category: "Cozinha",
-        createdAt: "2025-08-13"
-      }, VENDIDA Catt*/
-      /*{
-        id: "taca_vinho-1",
-        title: "Taças de vinho",
-        price: 20.00,
-        description: "",
-        image: "imagens/taca_cristal_vinho.jpg",
-        condition: "Usado",
-        category: "Cozinha",
-        createdAt: "2025-08-13"
-      }, VENDIDO - Maria */ 
-      /*{
-        id: "taca_c-1",
-        title: "Taças de cerveja",
-        price: 20.00,
-        description: "",
-        image: "imagens/taca_cristal_c.jpg",
-        condition: "Usado",
-        category: "Cozinha",
-        createdAt: "2025-08-13"
-      },Vendido - Maria*/
+        createdAt: "2025-08-20"
+      },      
       {
         id: "taca-1",
         title: "Taça",
@@ -1297,7 +767,7 @@
         category: "Itens Diversos",
         createdAt: "2025-08-13"
       },      
-      {
+      /*{
         id: "tabua_vidro-1",
         title: "Tabua de vidro tamanho P",
         price: 10.00,
@@ -1306,7 +776,7 @@
         condition: "Usado",
         category: "Cozinha",
         createdAt: "2025-08-13"
-      },
+      },*/
       {
         id: "prato_petisqueira-1",
         title: "Prato petisqueira",
@@ -1317,27 +787,7 @@
         category: "Cozinha",
         createdAt: "2025-08-13"
       },
-      {
-        id: "lixeira-2",
-        title: "Lixeira de plástico 30L",
-        price: 25.00,
-        description: "",
-        image: "imagens/lixo_org.jpg",
-        condition: "Usado",
-        category: "Itens Diversos",
-        createdAt: "2025-08-13"
-      },
       /*{
-        id: "microondas-2",
-        title: "Microondas Consul 20L",
-        price: 150.00,
-        description: "110v",
-        image: "imagens/microondas.jpg",
-        condition: "Usado",
-        category: "Eletrodomésticos",
-        createdAt: "2025-08-13"
-      },Vendido Vitoria*/
-      {
         id: "colchao-2",
         title: "Colchão de casal",
         price: 80.00,
@@ -1346,38 +796,137 @@
         condition: "Usado",
         category: "Itens Diversos",
         createdAt: "2025-08-13"
+      },*/
+      {
+        id: "porta-treco",
+        title: "Porta Treco",
+        price: 10.00,
+        description: "",
+        image: "imagens/porta_treco.jpg",
+        condition: "Usado",
+        category: "Itens Diversos",
+        createdAt: "2025-10-18"
       },
-      /*{
-        id: "utensilios-2",
-        title: "Utensílios de cozinha",
-        price: 35.00,
-        description: "Ralador R$ 15,00, escorredor R$ 15,00, cortador de batata R$ 10,00",
-        image: "imagens/utensilios.jpg",
+      {
+        id: "potes-hermeticos",
+        title: "Potes Herméticos",
+        price: 25.00,
+        description: "",
+        image: "imagens/potes-hermeticos.jpg",
+        condition: "Novo",
+        category: "Cozinha",
+        createdAt: "2025-10-19"
+      },
+      {
+        id: "talheres",
+        title: "Talheres",
+        price: 30.00,
+        description: "",
+        image: "imagens/talheres.jpg",
         condition: "Usado",
         category: "Cozinha",
-        createdAt: "2025-08-13"
-      }, VENDIDO - Tia Flavia*/
-      /*{
-        id: "airfryer-1",
-        title: "Airfryer Philco 11L",
-        price: 180.00,
-        description: "Airfryer Philco 11L, 3 andares, 110v",
-        image: "imagens/airfryer.jpg",
+        createdAt: "2025-10-19"
+      },
+      {
+        id: "Shampoo-seco",
+        title: "Shampoo à seco",
+        price: 5.00,
+        description: "",
+        image: "imagens/shampoo_seco.jpg",
+        condition: "Novo",
+        category: "Itens Diversos",
+        createdAt: "2025-10-19"
+      },
+      {
+        id: "elef-pelu",
+        title: "Elefante de pelúcia",
+        price: 40.00,
+        description: "",
+        image: "imagens/elef_pelucia.jpg",
+        condition: "Novo",
+        category: "Itens Diversos",
+        createdAt: "2025-10-19"
+      },
+      {
+        id: "pocoyo",
+        title: "Pocoyo",
+        price: 30.00,
+        description: "",
+        image: "imagens/pocoyo.jpg",
+        condition: "Novo",
+        category: "Itens Diversos",
+        createdAt: "2025-10-20"
+      },
+      {
+        id: "tuctuc",
+        title: "Tuc Tuc",
+        price: 20.00,
+        description: "",
+        image: "imagens/tuctuc_tai.jpg",
+        condition: "Novo",
+        category: "Itens Diversos",
+        createdAt: "2025-10-19"
+      },
+      {
+        id: "iluminador",
+        title: "Iluminador Marmorizado Natura 3,5g",
+        price: 50.00,
+        description: "",
+        image: "imagens/iluminador.jpg",
+        condition: "Novo",
+        category: "Itens Diversos",
+        createdAt: "2025-10-20"
+      },
+      {
+        id: "copo-termico",
+        title: "Copo Térmico Inox 360ml",
+        price: 25.00,
+        description: "",
+        image: "imagens/copo_termico.jpg",
+        condition: "Novo",
+        category: "Itens Diversos",
+        createdAt: "2025-10-19"
+      },
+      {
+        id: "gel-facial",
+        title: "Gel limpeza Facial",
+        price: 30.00,
+        description: "",
+        image: "imagens/gel_limpeza_facial.jpg",
+        condition: "Novo",
+        category: "Itens Diversos",
+        createdAt: "2025-10-19"
+      },
+      {
+        id: "repelente",
+        title: "Repelente Off Family 200ml",
+        price: 10.00,
+        description: "",
+        image: "imagens/repelente.jpg",
+        condition: "Novo",
+        category: "Itens Diversos",
+        createdAt: "2025-10-19"
+      },
+      {
+        id: "pisca-pisca",
+        title: "Pisca Pisca Bateria",
+        price: 8.00,
+        description: "",
+        image: "imagens/pisca-pisca.jpg",
+        condition: "Novo",
+        category: "Itens Diversos",
+        createdAt: "2025-10-19"
+      },
+      {
+        id: "panela-ceramica",
+        title: "Panela de cenâmica Ceraflame 4L",
+        price: 200.00,
+        description: "",
+        image: "imagens/panela-ceramica.jpg",
         condition: "Usado",
-        category: "Eletrodomésticos",
-        createdAt: "2025-08-13"
-      }, VENDIDO - Miguel*/
-      /*{
-        id: "maq_lavar-1",
-        title: "Máquina de lavar roupas Electrolux 13kg",
-        price: 1000.00,
-        description: "Máquina de Lavar roupa Eletrolux Essential Care 13kg, 110v",
-        image: "imagens/maq_lavar.jpg",
-        condition: "Usado",
-        category: "Eletrodomésticos",
-        createdAt: "2025-08-23"
-      }, VENDIDO SANDRA*/
-
+        category: "Cozinha",
+        createdAt: "2025-10-20"
+      },
 
     ];
 
